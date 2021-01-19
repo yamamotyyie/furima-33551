@@ -1,24 +1,59 @@
-# README
+# FURIMAテーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## userテーブル
+|   Column   |  Type  | Options   |
+| ---------- | ------ | --------- |
+| nickname | string | null: false |
+| email | string | null: false |
+| encrypted_password | string | null: false |
+| full-surname | string | null: false |
+| full-name | string | null: false |
+| half-surname | string | null: false |
+| half-name | string | null: false |
+| birthday | date | null: false |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :purchases
 
-* Ruby version
+## itemsテーブル
+|   Column   |  Type  | Options   |
+| ---------- | ------ | --------- |
+| user | reference | null: false foreign_key: true |
+| item_name | string | null:false |
+| text | text | null: false |
+| category_id | integer active_hash| null: false|
+| status_id | integer active_hash| null: false |
+| burden_id | integer active_hash| null: false |
+| prefecture_id | integer active_hash| null: false |
+| ship_day_id | integer active_hash| null: false |
+| price | integer | null: false |
 
-* System dependencies
+### Association
+- belong_to :user
+- has_one :purchase
 
-* Configuration
+## purchasesテーブル
+|   Column   |    Type   |   Options   |
+| ---------- | --------- | ----------- |
+|    user    | reference | null: false foreign_key: true|
+|    item   | reference | null: false foreign_key: true|
 
-* Database creation
+### Association
+- belong_to :user
+- belong_to :item
+- has_one :address
 
-* Database initialization
+## addressesテーブル
+|   Column   |  Type  | Options   |
+| ---------- | ------ | --------- |
+| purchase | reference | null: false foreign_key: true |
+| postal_code | string | null: false |
+| prefecture_id | integer active_hash| null:false|
+| city | string | null: false|
+| address | string | null: false |
+| building | string | |
+| number | string | null: false |
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belong_to :purchase
