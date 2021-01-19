@@ -42,9 +42,9 @@
 ### Association
 - belong_to :user
 - belong_to :item
-- has_many :address
+- has_many :addresses
 
-## addressテーブル
+## addressesテーブル
 |   Column   |  Type  | Options   |
 | ---------- | ------ | --------- |
 | purchase | reference | null: false foreign_key: true |
