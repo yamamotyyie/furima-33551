@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchase
+- has_many :purchases
 
 ## itemsテーブル
 |   Column   |  Type  | Options   |
@@ -22,17 +22,22 @@
 | user | reference | null: false foreign_key: true |
 | item_name | string | null:false |
 | text | text | null: false |
+| category | active_hash | null: false|
+| status | active_hash | null: false |
+| burden | active_hash | null: false |
+| ship_from | active_hash | null: false |
+| ship_day | active_hash | null: false |
 | price | integer | null: false |
 
 ### Association
 - belong_to :user
 - has_one :purchase
 
-## purchaseテーブル
+## purchasesテーブル
 |   Column   |    Type   |   Options   |
 | ---------- | --------- | ----------- |
 |    user    | reference | null: false foreign_key: true|
-|    items   | reference | null: false foreign_key: true|
+|    item   | reference | null: false foreign_key: true|
 
 ### Association
 - belong_to :user
@@ -43,8 +48,12 @@
 |   Column   |  Type  | Options   |
 | ---------- | ------ | --------- |
 | purchase | reference | null: false foreign_key: true |
-| postal_code | integer | null: false |
+| postal_code | string | null: false |
+| prefecture | active_hash | null:false|
 | city | string | null: false|
 | address | string | null: false |
 | building | string | |
-| number | integer | null: false |
+| number | string | null: false |
+
+### Association
+- belong_to :purchase
