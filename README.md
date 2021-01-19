@@ -5,7 +5,7 @@
 | ---------- | ------ | --------- |
 | nickname | string | null: false |
 | email | string | null: false |
-| password | string | null: false |
+| encrypted_password | string | null: false |
 | full-surname | string | null: false |
 | full-name | string | null: false |
 | half-surname | string | null: false |
@@ -22,11 +22,11 @@
 | user | reference | null: false foreign_key: true |
 | item_name | string | null:false |
 | text | text | null: false |
-| category | active_hash | null: false|
-| status | active_hash | null: false |
-| burden | active_hash | null: false |
-| ship_from | active_hash | null: false |
-| ship_day | active_hash | null: false |
+| category_id | integer active_hash| null: false|
+| status_id | integer active_hash| null: false |
+| burden_id | integer active_hash| null: false |
+| prefecture_id | integer active_hash| null: false |
+| ship_day_id | integer active_hash| null: false |
 | price | integer | null: false |
 
 ### Association
@@ -42,14 +42,14 @@
 ### Association
 - belong_to :user
 - belong_to :item
-- has_many :addresses
+- has_one :address
 
 ## addressesテーブル
 |   Column   |  Type  | Options   |
 | ---------- | ------ | --------- |
 | purchase | reference | null: false foreign_key: true |
 | postal_code | string | null: false |
-| prefecture | active_hash | null:false|
+| prefecture_id | integer active_hash| null:false|
 | city | string | null: false|
 | address | string | null: false |
 | building | string | |
