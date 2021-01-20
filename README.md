@@ -6,10 +6,10 @@
 | nickname | string | null: false |
 | email | string | null: false |
 | encrypted_password | string | null: false |
-| full-surname | string | null: false |
-| full-name | string | null: false |
-| half-surname | string | null: false |
-| half-name | string | null: false |
+| full_surname | string | null: false |
+| full_name | string | null: false |
+| half_surname | string | null: false |
+| half_name | string | null: false |
 | birthday | date | null: false |
 
 ### Association
