@@ -22,4 +22,5 @@ class User < ApplicationRecord
     validates :half_name, presence: true
   end
   
+  has_many :items
 end

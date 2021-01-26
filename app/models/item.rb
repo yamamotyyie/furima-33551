@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
-  has_one_attached :image
 
+  belong_to :user
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belong_to :burden,:category,:prefecture,:ship_day,:status
+  has_one_attached :image
 end
