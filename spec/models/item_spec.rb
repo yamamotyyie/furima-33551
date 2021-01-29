@@ -7,12 +7,13 @@ RSpec.describe Item, type: :model do
 
   describe "商品出品機能" do
 
-    #正常に動いてる場合
+  context'内容に問題がない場合'do
     it "全ての項目が存在すれば出品できる" do
       expect(@item).to be_valid
     end
-
-    #バリデーション
+  end
+    
+  context'内容に問題がある場合'do
     it "item_nameが空だと出品できない" do
       @item.item_name = ""
       @item.valid?
@@ -38,13 +39,13 @@ RSpec.describe Item, type: :model do
     end
 
     it "priceが300以下だと出品できない" do
-      @item.price = "150"
+      @item.price = 150
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
     end
 
     it "priceが9999999以上だと出品できない" do
-      @item.price = "10000000"
+      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be less than 9999999")
     end
@@ -56,31 +57,31 @@ RSpec.describe Item, type: :model do
     end
 
     it "categoryが空だと出品できない" do
-      @item.category_id = "1"
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
 
     it "statusが空だと出品できない" do
-      @item.status_id = "1"
+      @item.status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Status must be other than 1")
     end
 
     it "burdenが空だと出品できない" do
-      @item.burden_id = "1"
+      @item.burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Burden must be other than 1")
     end
 
     it "prefectureが空だと出品できない" do
-      @item.prefecture_id = "1"
+      @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
     end
 
     it "ship_dayが空だと出品できない" do
-      @item.ship_day_id = "1"
+      @item.ship_day_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Ship day must be other than 1")
     end
@@ -90,5 +91,6 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("User must exist")
     end
+  end
   end
 end
