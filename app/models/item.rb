@@ -15,8 +15,12 @@ class Item < ApplicationRecord
   validates :category_id,:status_id,:burden_id,:prefecture_id,:ship_day_id, numericality: { other_than: 1 } 
 
   belongs_to :user
+  has_one    :purchase
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :burden,:category,:prefecture,:ship_day,:status
-  
+  belongs_to :burden
+  belongs_to :category
+  belongs_to :prefecture
+  belongs_to :ship_day
+  belongs_to :status
 end
