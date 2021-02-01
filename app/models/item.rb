@@ -17,6 +17,9 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :burden,:category,:prefecture,:ship_day,:status
-  
+  belongs_to :burden
+  belongs_to :category
+  belongs_to :prefecture
+  belongs_to :ship_day
+  belongs_to :status
 end
