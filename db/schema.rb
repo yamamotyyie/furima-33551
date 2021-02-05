@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_120209) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.string "number", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["purchase_id"], name: "index_addresses_on_purchase_id"
