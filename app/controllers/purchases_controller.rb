@@ -5,20 +5,17 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase_address = PurchaseAddress.new
-    if @item.purchase.present?
-      redirect_to root_path
-    end
   end
 
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
-  if @purchase_address.valid?
-    pay_item
-    @purchase_address.save
-    redirect_to root_path
-  else
-    render action: :index
-  end
+    if @purchase_address.valid?
+      pay_item
+      @purchase_address.save
+      redirect_to root_path
+    else
+      render action: :index
+    end
   end
 
 
@@ -42,7 +39,7 @@ class PurchasesController < ApplicationController
   end
 
   def item_sold
-    unless @item.user_id != current_user.id
+    if @item.purchase.present? || @item.user_id == current_user.id
       redirect_to root_path
     end
   end
