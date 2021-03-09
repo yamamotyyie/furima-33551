@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded',function(){
-  const ImageList = document.getElementById('item-image')
+  const ImageList = document.getElementById('')
 });
